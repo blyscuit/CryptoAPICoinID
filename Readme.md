@@ -1,7 +1,9 @@
 
 ## CoinIDGlobal
 
-Crypto ID by corresponding ticker. For searching coin across API platforms.- CoinMarketCap
+Crypto ID by corresponding ticker. For searching coin across API platforms.
+
+- CoinMarketCap
 - CoinGecko
 - CoinCap
 
