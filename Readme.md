@@ -23,6 +23,7 @@ Crypto ID by corresponding ticker. For searching coin across API platforms.
     "LTC": {"coin_market_cap": 2, "coin_gecko": "litecoin", "coin_cap": "litecoin"},
     
     // ...
+}
 ```
 
 ## Regenerate
