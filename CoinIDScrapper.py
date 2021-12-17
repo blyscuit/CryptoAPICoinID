@@ -17,20 +17,24 @@ def add_id(_symbol, id, brand):
 # CoinMarketCap
 r = requests.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY='+os.environ.get("coinmarketcap"))
 coinmarketcap = r.json()["data"]
+# print(len(coinmarketcap))
 
 for coin in coinmarketcap:
-    add_id(coin['symbol'], coin['id'], 'coin_market_cap')
+    add_id(coin['symbol'], str(coin['id']), 'coin_market_cap')
 
 
 # CoinGecko
 r = requests.get('https://api.coingecko.com/api/v3/coins/list')
+# print(len(r.json()))
 
 for coin in r.json():
     add_id(coin['symbol'], coin['id'], 'coin_gecko')
 
 
 # CoinCap
-r = requests.get('https://api.coincap.io/v2/assets')
+r = requests.get('https://api.coincap.io/v2/assets?limit=2000')
+# print(len(r.json()["data"]))
+
 for coin in r.json()["data"]:
     add_id(coin['symbol'], coin['id'], 'coin_cap')
 

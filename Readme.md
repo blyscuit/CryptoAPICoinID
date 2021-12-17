@@ -11,6 +11,10 @@ Crypto ID by corresponding ticker. For searching coin across API platforms.
 
 - JSON
 
+### Library
+
+- Swift
+
 ## What does it look like?
 
 *data.json*
@@ -18,9 +22,9 @@ Crypto ID by corresponding ticker. For searching coin across API platforms.
 ```
 {
     
-    "BTC": {"coin_market_cap": 1, "coin_gecko": "bitcoin", "coin_cap": "bitcoin"}, 
+    "BTC": {"coin_market_cap": "1", "coin_gecko": "bitcoin", "coin_cap": "bitcoin"}, 
     
-    "LTC": {"coin_market_cap": 2, "coin_gecko": "litecoin", "coin_cap": "litecoin"},
+    "LTC": {"coin_market_cap": "2", "coin_gecko": "litecoin", "coin_cap": "litecoin"},
     
     // ...
 }
