@@ -9,4 +9,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run unit tests
-      run: xcodebuild test -scheme CoinIdSwift -workspace CoinIdSwift.xcworkspace -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.0' | xcpretty && exit ${PIPESTATUS[0]}
+      run: xcodebuild test -scheme CoinIdSwift -project CoinIdSwift.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.0' | xcpretty && exit ${PIPESTATUS[0]}
