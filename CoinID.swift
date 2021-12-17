@@ -10,6 +10,7 @@ import Foundation
 public protocol CoinIDProtocol {
 
     func getID(with symbol: String, provider: CoinAPIProvider) -> String?
+    func convert(id: String, provider: CoinAPIProvider, to resultProvider: CoinAPIProvider) -> String?
 }
 
 public enum CoinAPIProvider: String {
@@ -46,5 +47,15 @@ extension CoinId: CoinIDProtocol {
         guard let coin = coinIds[symbol.uppercased()] as? [String: Any],
         let id = coin[provider.rawValue] as? String else { return nil }
         return id
+    }
+
+    public func convert(id: String, provider: CoinAPIProvider, to resultProvider: CoinAPIProvider) -> String? {
+        for coin in coinIds {
+            if let coinId = ((coin.value as? [String: Any])?[provider.rawValue] as? String),
+               coinId == id {
+                return ((coin.value as? [String: Any])?[resultProvider.rawValue] as? String)
+            }
+        }
+        return nil
     }
 }
