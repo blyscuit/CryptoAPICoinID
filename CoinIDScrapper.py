@@ -7,18 +7,20 @@ load_dotenv()
 
 data = {}
 
-
 def add_id(_symbol, id, brand):
     symbol = _symbol.upper()
     if symbol not in data:
         data[symbol] = {}
     data[symbol][brand] = id
 
+def rankSort(e):
+  return e['rank']
+
 # CoinMarketCap
 r = requests.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY='+os.environ.get("coinmarketcap"))
 coinmarketcap = r.json()["data"]
+coinmarketcap.sort(reverse=True, key=rankSort)
 # print(len(coinmarketcap))
-
 for coin in coinmarketcap:
     add_id(coin['symbol'], str(coin['id']), 'coin_market_cap')
 
@@ -27,7 +29,7 @@ for coin in coinmarketcap:
 cg = requests.get('https://api.coingecko.com/api/v3/coins/list')
 # print(len(cg.json()))
 
-for coin in cg.json():
+for coin in reversed(cg.json()):
     add_id(coin['symbol'], coin['id'], 'coin_gecko')
 
 
