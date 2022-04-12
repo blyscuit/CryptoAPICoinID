@@ -24,10 +24,10 @@ for coin in coinmarketcap:
 
 
 # CoinGecko
-r = requests.get('https://api.coingecko.com/api/v3/coins/list')
-# print(len(r.json()))
+cg = requests.get('https://api.coingecko.com/api/v3/coins/list')
+# print(len(cg.json()))
 
-for coin in r.json():
+for coin in cg.json():
     add_id(coin['symbol'], coin['id'], 'coin_gecko')
 
 
@@ -35,8 +35,12 @@ for coin in r.json():
 r = requests.get('https://api.coincap.io/v2/assets?limit=2000')
 # print(len(r.json()["data"]))
 
-for coin in r.json()["data"]:
-    add_id(coin['symbol'], coin['id'], 'coin_cap')
+for coin in reversed(r.json()["data"]):
+    if any(x['id'] == coin['id'] for x in cg.json()):
+        add_id(coin['symbol'], coin['id'], 'coin_gecko')
+        add_id(coin['symbol'], coin['id'], 'coin_cap')
+    else:
+        add_id(coin['symbol'], coin['id'], 'coin_cap')
 
 with open('data.json', 'w') as outfile:
     json.dump(data, outfile)
