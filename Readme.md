@@ -9,7 +9,7 @@ Crypto ID by corresponding ticker. For searching coin across API platforms.
 
 ## What's available?
 
-- JSON
+- [JSON](https://github.com/blyscuit/CryptoAPICoinID/releases/download/latest/data.json)
 
 ### Library
 
