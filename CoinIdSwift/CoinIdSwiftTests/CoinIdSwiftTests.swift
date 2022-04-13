@@ -22,9 +22,29 @@ class CoinIdSwiftTests: XCTestCase {
         XCTAssertEqual(coinId, "bitcoin")
     }
 
+    func testLunaCoinCoinCap() throws {
+        let coinId = coinId.getID(with: "LUNA", provider: .coinCap)
+        XCTAssertEqual(coinId, "terra-luna")
+    }
+
     func testEtheriumCoinGecko() throws {
         let coinId = coinId.getID(with: "ETH", provider: .coinGecko)
         XCTAssertEqual(coinId, "ethereum")
+    }
+
+    func testLunaCoinGecko() throws {
+        let coinId = coinId.getID(with: "LUNA", provider: .coinGecko)
+        XCTAssertEqual(coinId, "terra-luna")
+    }
+
+    func testCROCoinCoinCap() throws {
+        let coinId = coinId.getID(with: "CRO", provider: .coinCap)
+        XCTAssertEqual(coinId, "crypto-com-coin")
+    }
+
+    func testCROCoinGecko() throws {
+        let coinId = coinId.getID(with: "CRO", provider: .coinGecko)
+        XCTAssertEqual(coinId, "crypto-com-chain")
     }
 
     func testCordanoCoinMarketCap() throws {
@@ -34,7 +54,7 @@ class CoinIdSwiftTests: XCTestCase {
 
     func testSolanaFromCoinCapToCoinMarketCap() throws {
         let coinId = coinId.convert(id: "solana", provider: .coinCap, to: .coinMarketCap)
-        XCTAssertEqual(coinId, "12003")
+        XCTAssertEqual(coinId, "5426")
     }
 
     func testNonExistentCoinFromCoinCapToCoinMarketCap() throws {
