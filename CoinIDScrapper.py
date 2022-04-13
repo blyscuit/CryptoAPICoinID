@@ -30,7 +30,8 @@ cg = requests.get('https://api.coingecko.com/api/v3/coins/list')
 # print(len(cg.json()))
 
 for coin in reversed(cg.json()):
-    add_id(coin['symbol'], coin['id'], 'coin_gecko')
+    if "wrapped" not in coin['id'] and "wormhole" not in coin['id']:
+        add_id(coin['symbol'], coin['id'], 'coin_gecko')
 
 
 # CoinCap
