@@ -14,6 +14,15 @@ jobs:
       env: 
           coinmarketcap: ${{ secrets.COINMARKETCAP }}
       run: python3 CoinIDScrapper.py
+    
+    - uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: true
+        title: "Development Build"
+        files: |
+          data.json
     - uses: actions/upload-artifact@v3
       with:
         name: my-artifact
